@@ -6,17 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "schema": "ts-simplify -f ./src/sanity/sanity.config.ts ./sanity-schema.ts"
   },
   "dependencies": {
     "@commercelayer/cli": "^5.19.1",
+    "@sanity-typed/types": "^6.3.2",
     "@sanity/vision": "^3.28.0",
+    "groq-builder": "^0.4.0",
     "next": "14.1.0",
     "next-sanity": "^7.1.1",
     "react": "^18",
     "react-dom": "^18",
     "sanity": "^3.28.0",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "ts-simplify": "^0.1.2"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^3.0.1",

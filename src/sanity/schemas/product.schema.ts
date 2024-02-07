@@ -1,5 +1,4 @@
-import {defineType} from "@sanity/types";
-import {defineArrayMember, defineField} from "sanity";
+import {defineArrayMember, defineField, defineType} from "@sanity-typed/types";
 import {SchemaType} from "@/sanity/SchemaType";
 
 export const productSchema = defineType({
@@ -8,13 +7,15 @@ export const productSchema = defineType({
   fields: [
     defineField({
       name: "name",
-      type: "string"
+      type: "string",
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "sku",
       title: "SKU",
       type: "string",
-      description: "Stock keeping unit"
+      description: "Stock keeping unit",
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "richDescription",
@@ -23,7 +24,8 @@ export const productSchema = defineType({
         defineArrayMember({
           type: "block"
         })
-      ]
+      ],
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "keywords",
@@ -31,6 +33,16 @@ export const productSchema = defineType({
       of: [
         defineArrayMember({
           type: "string"
+        })
+      ]
+    }),
+    defineField({
+      name: "variants",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "reference",
+          to: [{ type: SchemaType.Variant }]
         })
       ]
     })

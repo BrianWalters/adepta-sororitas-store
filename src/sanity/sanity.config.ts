@@ -1,10 +1,12 @@
-import {defineConfig} from 'sanity'
+import {defineConfig} from '@sanity-typed/types'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {productSchema} from "@/sanity/schemas/product.schema";
 import {SchemaType} from "@/sanity/SchemaType";
+import { InferSchemaValues } from '@sanity-typed/types';
+import {variantSchema} from "@/sanity/schemas/variant.schema";
 
-export default defineConfig({
+const config = defineConfig({
   name: 'default',
   title: 'Adepta Sororitas Store',
 
@@ -20,7 +22,12 @@ export default defineConfig({
 
   schema: {
     types: [
-      productSchema
+      productSchema,
+      variantSchema
     ],
   },
 })
+
+export type SanityValues = InferSchemaValues<typeof config>;
+
+export default config

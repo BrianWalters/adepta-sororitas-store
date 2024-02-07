@@ -1,3 +1,4 @@
 export const SchemaType = {
-  Product: 'product'
+  Product: 'product',
+  Variant: 'variant',
 } as const
