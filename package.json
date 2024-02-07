@@ -10,11 +10,16 @@
   },
   "dependencies": {
     "@commercelayer/cli": "^5.19.1",
+    "@sanity/vision": "^3.28.0",
     "next": "14.1.0",
+    "next-sanity": "^7.1.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sanity": "^3.28.0",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
+    "@sanity/eslint-config-studio": "^3.0.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
