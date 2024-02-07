@@ -11,13 +11,6 @@ export const productSchema = defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: "sku",
-      title: "SKU",
-      type: "string",
-      description: "Stock keeping unit",
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
       name: "richDescription",
       type: "array",
       of: [

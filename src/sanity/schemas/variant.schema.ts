@@ -14,6 +14,7 @@ export const variantSchema = defineType({
       name: "sku",
       type: "string",
       title: "SKU",
+      description: "Stock keeping unit",
       validation: Rule => Rule.required(),
     })
   ]
