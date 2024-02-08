@@ -6,6 +6,7 @@ import sanityConfig from "@/sanity/sanity.config"
 export function Studio() {
   return (
     <>
+      {/* @ts-ignore */}
       <NextStudio config={sanityConfig} />
     </>
   )
