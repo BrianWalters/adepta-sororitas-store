@@ -11,7 +11,7 @@ export const ProductDetail: FunctionComponent<ProductDetailProps> = ({id}) => {
   const [product, setProduct] = useState<any>()
 
   useEffect(() => {
-    commerce.getProduct(id).then(p => setProduct(p))
+    commerce.getProductById(id).then(p => setProduct(p))
   }, [id])
 
   return (

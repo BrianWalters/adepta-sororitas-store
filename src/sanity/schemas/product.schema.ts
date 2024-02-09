@@ -37,7 +37,8 @@ export const productSchema = defineType({
           type: "reference",
           to: [{ type: SchemaType.Variant }]
         })
-      ]
+      ],
+      validation: Rule => Rule.min(1)
     })
   ]
 })

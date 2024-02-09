@@ -8,7 +8,7 @@ interface ProductCardProps {
 
 export const ProductCard:FunctionComponent<ProductCardProps> = ({ name, id, image}) => {
   return (
-    <div className="border rounded p4">
+    <div className="border rounded p-4">
       <a className="text-2xl" href={`/product/${id}`}>{name}</a>
       <p>{name}</p>
       <p><img src={image} alt=""/></p>

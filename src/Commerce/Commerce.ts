@@ -37,8 +37,19 @@ export class Commerce {
     return await response.json()
   }
 
-  public async getProduct(id: string): Promise<any> {
+  public async getProductById(id: string): Promise<any> {
     const response = await fetch(`${this.base}/api/skus/${id}?include=prices`, {
+      headers: {
+        'Accept': 'application/vnd.api+json',
+        'Authorization': `Bearer ${await this.getToken()}`
+      }
+    })
+
+    return await response.json()
+  }
+
+  public async getProductBySku(sku: string): Promise<any> {
+    const response = await fetch(`${this.base}/api/skus/${sku}?include=prices`, {
       headers: {
         'Accept': 'application/vnd.api+json',
         'Authorization': `Bearer ${await this.getToken()}`

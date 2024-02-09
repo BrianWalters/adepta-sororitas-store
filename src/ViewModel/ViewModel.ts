@@ -5,13 +5,23 @@ export class ViewModel {
   public async getProducts(): Promise<ProductViewModel[]> {
     const productsFromCms = await cms.getProducts()
 
-    return productsFromCms.map(p => ({
-      id: p._id,
-      name: p.name,
-      keywords: p.keywords || [],
-      variants: (p.variants || []).map(v => ({
-        name: v.name
-      }))
+    return Promise.all(productsFromCms.map(p => {
+      return new Promise<ProductViewModel>((resolve, reject) => {
+        // const productsFromCommerce = Promise.all(
+        //   p.variants.map(variant => commerce.getProductById())
+        // )
+        //
+        resolve({
+          id: p._id,
+          name: p.name,
+          keywords: p.keywords || [],
+          variants: (p.variants || []).map(v => ({
+            id: v._id,
+            name: v.name,
+            sku: v.sku
+          }))
+        })
+      })
     }))
   }
 }
