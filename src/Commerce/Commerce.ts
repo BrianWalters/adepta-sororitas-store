@@ -38,7 +38,13 @@ export class Commerce {
   }
 
   public async getProductById(id: string): Promise<any> {
-    const response = await fetch(`${this.base}/api/skus/${id}?include=prices`, {
+    const url = new URL(
+      `${this.base}/api/skus/${id}`,
+    )
+    const queryParams = new URLSearchParams({
+      include: "prices"
+    })
+    const response = await fetch(`${url}?${queryParams}`, {
       headers: {
         'Accept': 'application/vnd.api+json',
         'Authorization': `Bearer ${await this.getToken()}`
@@ -49,7 +55,12 @@ export class Commerce {
   }
 
   public async getProductBySku(sku: string): Promise<any> {
-    const response = await fetch(`${this.base}/api/skus/${sku}?include=prices`, {
+    const url = `${this.base}/api/skus`
+    const queryParams = new URLSearchParams({
+      include: "prices",
+      "filter[q][code_eq]": sku
+    })
+    const response = await fetch(`${url}?${queryParams}`, {
       headers: {
         'Accept': 'application/vnd.api+json',
         'Authorization': `Bearer ${await this.getToken()}`

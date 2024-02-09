@@ -11,7 +11,7 @@ export class Sanity {
     });
   }
 
-  public async getProducts() {
+  public async getProductListings() {
     const productsQuery = q.star
       .filterByType('product')
       .project(q => {

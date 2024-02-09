@@ -17,7 +17,7 @@ export const ProductDetail: FunctionComponent<ProductDetailProps> = ({id}) => {
   return (
     <div>
       <details>
-        <summary>Response</summary>
+        <summary>Data</summary>
         <pre>{JSON.stringify(product, null, 1)}</pre>
       </details>
       {product && (
