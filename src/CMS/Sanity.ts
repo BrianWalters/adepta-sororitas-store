@@ -14,6 +14,8 @@ export class Sanity {
   }
 
   public async getProductListings() {
+    "use server"
+
     const productsQuery = q.star
       .filterByType('product')
       .project(q => {
@@ -34,6 +36,8 @@ export class Sanity {
   }
 
   public async getProductDetail(id: string) {
+    "use server"
+
     const productQuery = q.star
       .filterByType('product')
       .filter("_id == $id")
