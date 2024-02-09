@@ -5203,10 +5203,13 @@ graphemer@^1.4.0:
   resolved "https://registry.yarnpkg.com/graphemer/-/graphemer-1.4.0.tgz#fb2f1d55e0e3a1849aeffc90c4fa0dd53a0e66c6"
   integrity sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==
 
-groq-builder@0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/groq-builder/-/groq-builder-0.3.0.tgz#dac7eeeaf6cf1afaf266777d6f675819309fff2d"
-  integrity sha512-nMSGqi5424mcx8/ktaCDinIUK4XUOvY668q/3xWRRXmJajEq2QIyD/XzV4DZl5bBdxSFxj2eLLqlelQ+WNfn9A==
+groq-builder@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/groq-builder/-/groq-builder-0.5.0.tgz#9f5254fb100a2350beb8dbe87dc4ce1b94320a74"
+  integrity sha512-thaQu6Z13R4ankz3PF1yecBMkYrJwzbvWDuvXTz8mwwT1DPAWUWrsB6xvwKZ9373RH29SxA0RnZ0Aw+2r+CG0w==
+  dependencies:
+    type-fest "^4.10.1"
+    zod "^3.22.4"
 
 groq-js@^1.1.12, groq-js@^1.4.1:
   version "1.4.1"
@@ -9144,6 +9147,11 @@ type-fest@^0.8.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
 
+type-fest@^4.10.1:
+  version "4.10.2"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.10.2.tgz#3abdb144d93c5750432aac0d73d3e85fcab45738"
+  integrity sha512-anpAG63wSpdEbLwOqH8L84urkL6PiVIov3EMmgIhhThevh9aiMQov+6Btx0wldNcvm4wV+e2/Rt1QdDwKHFbHw==
+
 typed-array-buffer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/typed-array-buffer/-/typed-array-buffer-1.0.0.tgz#18de3e7ed7974b0a729d3feecb94338d1472cd60"
@@ -9722,3 +9730,8 @@ zip-stream@^4.1.0:
     archiver-utils "^3.0.4"
     compress-commons "^4.1.2"
     readable-stream "^3.6.0"
+
+zod@^3.22.4:
+  version "3.22.4"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.4.tgz#f31c3a9386f61b1f228af56faa9255e845cf3fff"
+  integrity sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==

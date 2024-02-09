@@ -14,7 +14,7 @@
     "@commercelayer/cli": "^5.19.1",
     "@sanity-typed/types": "^6.3.2",
     "@sanity/vision": "^3.28.0",
-    "groq-builder": "0.3.0",
+    "groq-builder": "^0.5.0",
     "next": "14.1.0",
     "next-sanity": "^7.1.1",
     "react": "^18",
