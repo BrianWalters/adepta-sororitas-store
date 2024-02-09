@@ -1,17 +1,19 @@
 "use client"
 
 import {FunctionComponent, useEffect, useState} from "react";
-import {commerce} from "@/Commerce";
+import {viewModelProvider} from "@/ViewModel";
+import {ProductDetailViewModel} from "@/ViewModel/types/ProductDetailViewModel";
+import {PortableText} from "@portabletext/react";
 
 interface ProductDetailProps {
   id: string
 }
 
 export const ProductDetail: FunctionComponent<ProductDetailProps> = ({id}) => {
-  const [product, setProduct] = useState<any>()
+  const [product, setProduct] = useState<ProductDetailViewModel>()
 
   useEffect(() => {
-    commerce.getProductById(id).then(p => setProduct(p))
+    viewModelProvider.getProduct(id).then(p => setProduct(p))
   }, [id])
 
   return (
@@ -22,9 +24,11 @@ export const ProductDetail: FunctionComponent<ProductDetailProps> = ({id}) => {
       </details>
       {product && (
         <div>
-          <h1 className="text-4xl">{product.data.attributes.name}</h1>
-          <p><img src={product.data.attributes.image_url} alt=""/></p>
-          <p>{product.data.attributes.description}</p>
+          <h1 className="text-4xl">{product.name}</h1>
+          <p className="text-2xl">{product.variants[0].priceFormatted}</p>
+          <p>{ product.keywords.join(", ")}</p>
+          <p><img src={product.variants[0].imageUrl} alt=""/></p>
+          <PortableText value={product.richDescription} />
         </div>
       )}
 

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@commercelayer/cli": "^5.19.1",
+    "@portabletext/react": "^3.0.11",
     "@sanity-typed/types": "^6.3.2",
     "@sanity/vision": "^3.28.0",
     "groq-builder": "0.3.0",

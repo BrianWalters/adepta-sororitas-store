@@ -1,15 +1,15 @@
 "use client"
 
 import {FunctionComponent, useEffect, useState} from "react";
-import {viewModel} from "@/ViewModel";
-import {ProductViewModel} from "@/ViewModel/types/ProductViewModel";
+import {viewModelProvider} from "@/ViewModel";
+import {ProductListingViewModel} from "@/ViewModel/types/ProductListingViewModel";
 import {ProductCard} from "@/components/ProductCard";
 
 export const ProductList: FunctionComponent = () => {
-  const [products, setProducts] = useState<ProductViewModel[]>([])
+  const [products, setProducts] = useState<ProductListingViewModel[]>([])
 
   useEffect(() => {
-    viewModel.getProducts().then(p => setProducts(p))
+    viewModelProvider.getProducts().then(p => setProducts(p))
   }, [])
 
   return (

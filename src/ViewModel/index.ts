@@ -1,3 +1,3 @@
-import {ViewModel} from "@/ViewModel/ViewModel";
+import {ViewModelProvider} from "@/ViewModel/ViewModelProvider";
 
-export const viewModel = new ViewModel()
+export const viewModelProvider = new ViewModelProvider()
