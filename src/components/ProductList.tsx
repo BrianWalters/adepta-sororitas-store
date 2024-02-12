@@ -15,7 +15,7 @@ export const ProductList: FunctionComponent = () => {
   return (
     <div>
       <details>
-        <summary>Data</summary>
+        <summary>View Model</summary>
         <pre>{JSON.stringify(products, null, 1)}</pre>
       </details>
       <ul className="grid gap-4 grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))]">
