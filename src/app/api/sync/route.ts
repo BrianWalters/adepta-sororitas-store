@@ -12,25 +12,19 @@ export async function POST(request: NextRequest) {
     return new NextResponse("Unauthorized", { status: 401 })
   }
 
-  console.log(body)
+  console.log(`==SYNC WEBHOOK==`, body)
 
   const webhookPayload = webhookPayloadSchema.parse(body)
 
-  if (webhookPayload._type === SchemaType.Variant && webhookPayload.operation === "create") {
-    await commerceSyncer.createSku({ name: "test", code: "test" })
-  }
+  await commerceSyncer.createSku({ name: webhookPayload.name, code: webhookPayload.sku })
 
-  return new NextResponse("Noop")
+  return new NextResponse("Done")
 }
 
 const secret = process.env.SANITY_WEBHOOK_SECRET ?? ""
 
 const webhookPayloadSchema = z.object({
-  _id: z.string(),
-  _type: z.string(),
-  operation: z.union([
-    z.literal("create"),
-    z.literal("update"),
-    z.literal("delete"),
-  ]),
+  _type: z.literal(SchemaType.Variant),
+  name: z.string(),
+  sku: z.string()
 })
