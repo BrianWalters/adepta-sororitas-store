@@ -1,7 +1,7 @@
 import {ProductListingViewModel} from "@/ViewModel/types/ProductListingViewModel";
 import {cms, CmsProductListing} from "@/CMS";
 import {VariantViewModel} from "@/ViewModel/types/VariantViewModel";
-import {commerce} from "@/Commerce";
+import {commerceRepository} from "@/Commerce";
 import {ProductDetailViewModel} from "@/ViewModel/types/ProductDetailViewModel";
 
 export class ViewModelProvider {
@@ -44,7 +44,7 @@ export class ViewModelProvider {
   }
 
   private async makeVariantFromSkuCode(code: string): Promise<VariantViewModel> {
-    const sku = await commerce.getProductBySku(code)
+    const sku = await commerceRepository.getProductBySku(code)
 
     return {
       id: sku.data[0].id,

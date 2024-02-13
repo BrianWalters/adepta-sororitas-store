@@ -1,7 +1,7 @@
 import {authentication} from "@commercelayer/js-auth";
 import {getTokenFromCookies, setTokenInCookies} from "@/Commerce/cookies";
 
-export class Commerce {
+export class CommerceRepository {
   constructor(private clientId: string, private base: string) {
   }
 

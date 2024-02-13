@@ -16,6 +16,12 @@ export const variantSchema = defineType({
       title: "SKU",
       description: "Stock keeping unit",
       validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "imageUrl",
+      type: "string",
+      title: "Image URL",
+      validation: Rule => Rule.required(),
     })
   ]
 })
