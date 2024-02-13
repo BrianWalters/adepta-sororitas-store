@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
 
 const secret = process.env.SANITY_WEBHOOK_SECRET ?? ""
 
-export const webhookPayloadSchema = z.object({
+const webhookPayloadSchema = z.object({
   _id: z.string(),
   _type: z.string(),
   operation: z.union([
@@ -34,5 +34,3 @@ export const webhookPayloadSchema = z.object({
     z.literal("delete"),
   ]),
 })
-
-export type WebhookPayload = z.infer<typeof webhookPayloadSchema>
