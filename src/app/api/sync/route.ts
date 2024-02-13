@@ -5,18 +5,22 @@ import {commerceSyncer} from "@/Commerce";
 import {z} from "zod";
 
 export async function POST(request: NextRequest) {
-  const { isValidSignature, body } = await parseBody(request, secret)
+  const {isValidSignature, body} = await parseBody(request, secret)
 
   if (!isValidSignature) {
     console.log("unauthorized webhook attempt thwarted")
-    return new NextResponse("Unauthorized", { status: 401 })
+    return new NextResponse("Unauthorized", {status: 401})
   }
 
   console.log(`==SYNC WEBHOOK==`, body)
 
   const webhookPayload = webhookPayloadSchema.parse(body)
 
-  await commerceSyncer.createSku({ name: webhookPayload.name, code: webhookPayload.sku })
+  await commerceSyncer.createSku({
+    name: webhookPayload.name,
+    code: webhookPayload.sku,
+    imageUrl: webhookPayload.imageUrl
+  })
 
   return new NextResponse("Done")
 }
@@ -26,5 +30,6 @@ const secret = process.env.SANITY_WEBHOOK_SECRET ?? ""
 const webhookPayloadSchema = z.object({
   _type: z.literal(SchemaType.Variant),
   name: z.string(),
-  sku: z.string()
+  sku: z.string(),
+  imageUrl: z.string()
 })

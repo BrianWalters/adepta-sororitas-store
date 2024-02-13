@@ -25,8 +25,9 @@ export class CommerceSyncer {
     return this.token
   }
 
-  public async createSku(args: { name: string, code: string }) {
+  public async createSku(args: { name: string, code: string, imageUrl: string }) {
     const response = await fetch(`${this.base}/api/skus`, {
+      method: "POST",
       headers: {
         'Accept': 'application/vnd.api+json',
         'Authorization': `Bearer ${await this.getToken()}`
@@ -36,7 +37,8 @@ export class CommerceSyncer {
           type: "skus",
           attributes: {
             code: args.code,
-            name: args.name
+            name: args.name,
+            image_url: args.imageUrl
           }
         }
       })
