@@ -44,6 +44,10 @@ export class CommerceSyncer {
       })
     })
 
+    if (!response.ok) {
+      console.error(await response.json())
+    }
+
     return await response.json()
   }
 }
