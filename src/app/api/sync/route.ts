@@ -1,8 +1,8 @@
 import {NextRequest, NextResponse} from "next/server";
-import {webhookPayloadSchema} from "@/app/api/webhookPayloadSchema";
 import {parseBody} from "next-sanity/webhook";
 import {SchemaType} from "@/sanity/SchemaType";
 import {commerceSyncer} from "@/Commerce";
+import {z} from "zod";
 
 export async function POST(request: NextRequest) {
   const { isValidSignature, body } = await parseBody(request, secret)
@@ -12,11 +12,11 @@ export async function POST(request: NextRequest) {
     return new NextResponse("Unauthorized", { status: 401 })
   }
 
+  console.log(body)
+
   const webhookPayload = webhookPayloadSchema.parse(body)
 
   if (webhookPayload._type === SchemaType.Variant && webhookPayload.operation === "create") {
-    console.log(body)
-
     await commerceSyncer.createSku({ name: "test", code: "test" })
   }
 
@@ -24,3 +24,15 @@ export async function POST(request: NextRequest) {
 }
 
 const secret = process.env.SANITY_WEBHOOK_SECRET ?? ""
+
+export const webhookPayloadSchema = z.object({
+  _id: z.string(),
+  _type: z.string(),
+  operation: z.union([
+    z.literal("create"),
+    z.literal("update"),
+    z.literal("delete"),
+  ]),
+})
+
+export type WebhookPayload = z.infer<typeof webhookPayloadSchema>
